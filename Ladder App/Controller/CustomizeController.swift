@@ -13,6 +13,13 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var customizeTableView: UITableView!
     
+    var isAscending: Bool = true
+    var isAntagonist: Bool = true
+    var isWaving: Bool = true
+    var maximumReps: Int = 10
+    var timePerRep: Int = 5
+    var restNeeded: Int = 30
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +48,45 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomizeCell", for: indexPath) as! CustomizeCell
         cell.backgroundColor = .clear
         cell.accessoryType = .disclosureIndicator
-        cell.descriptionTextView.text = "Sets:"
+        
+        cell.descriptionTextView.textColor = .white
+        
+        switch indexPath.row {
+        case 0:
+            let directionString: String
+            if isAscending {
+                directionString = "Ascending"
+            } else {
+                directionString = "Descending"
+            }
+            cell.descriptionTextView.text = "Direction: " + directionString
+        case 1:
+            let antagonistString: String
+            if isAntagonist {
+                antagonistString = "YES"
+            } else {
+                antagonistString = "NO"
+            }
+            cell.descriptionTextView.text = "Antagonist training: " + antagonistString
+        case 2:
+            let wavingString: String
+            if isWaving {
+                wavingString = "YES"
+            } else {
+                wavingString = "NO"
+            }
+            cell.descriptionTextView.text = "Waving ladder: " + wavingString
+        case 3:
+            cell.descriptionTextView.text = "Maximum number of reps: " + String(maximumReps)
+        case 4:
+            cell.descriptionTextView.text = "Time per repetition: " + String(timePerRep)
+        case 5:
+            cell.descriptionTextView.text = "Rest needed: " + String(timePerRep)
+        default:
+            break
+        }
+
+
         return cell
     }
     
