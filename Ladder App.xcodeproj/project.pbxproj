@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4974FFEF2150D687006AFEA5 /* CustomizeTableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974FFEE2150D687006AFEA5 /* CustomizeTableViewData.swift */; };
+		4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974FFF021511B50006AFEA5 /* CustomizeCell.swift */; };
 		49B662C32147214D000B386F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C22147214D000B386F /* AppDelegate.swift */; };
-		49B662C52147214D000B386F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C42147214D000B386F /* ViewController.swift */; };
+		49B662C52147214D000B386F /* WorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C42147214D000B386F /* WorkoutController.swift */; };
 		49B662C82147214D000B386F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B662C62147214D000B386F /* Main.storyboard */; };
 		49B662CB2147214D000B386F /* Ladder_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C92147214D000B386F /* Ladder_App.xcdatamodeld */; };
 		49B662CD2147214E000B386F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49B662CC2147214E000B386F /* Assets.xcassets */; };
 		49B662D02147214E000B386F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B662CE2147214E000B386F /* LaunchScreen.storyboard */; };
 		49B662DB2147214F000B386F /* Ladder_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662DA2147214F000B386F /* Ladder_AppTests.swift */; };
+		49F8E89F214927B600571179 /* CustomizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E89E214927B600571179 /* CustomizeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4974FFEE2150D687006AFEA5 /* CustomizeTableViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTableViewData.swift; sourceTree = "<group>"; };
+		4974FFF021511B50006AFEA5 /* CustomizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCell.swift; sourceTree = "<group>"; };
 		49B662BF2147214D000B386F /* Ladder App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ladder App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B662C22147214D000B386F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		49B662C42147214D000B386F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49B662C42147214D000B386F /* WorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutController.swift; sourceTree = "<group>"; };
 		49B662C72147214D000B386F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49B662CA2147214D000B386F /* Ladder_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ladder_App.xcdatamodel; sourceTree = "<group>"; };
 		49B662CC2147214E000B386F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +43,7 @@
 		49B662D62147214F000B386F /* Ladder AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ladder AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B662DA2147214F000B386F /* Ladder_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ladder_AppTests.swift; sourceTree = "<group>"; };
 		49B662DC2147214F000B386F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F8E89E214927B600571179 /* CustomizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4920393E214832F100B21772 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4974FFEE2150D687006AFEA5 /* CustomizeTableViewData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4920393F214832FB00B21772 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4974FFF021511B50006AFEA5 /* CustomizeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		492039402148330000B21772 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				49B662C42147214D000B386F /* WorkoutController.swift */,
+				49F8E89E214927B600571179 /* CustomizeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		49B662B62147214D000B386F = {
 			isa = PBXGroup;
 			children = (
@@ -79,8 +110,10 @@
 		49B662C12147214D000B386F /* Ladder App */ = {
 			isa = PBXGroup;
 			children = (
+				492039402148330000B21772 /* Controller */,
+				4920393F214832FB00B21772 /* View */,
+				4920393E214832F100B21772 /* Model */,
 				49B662C22147214D000B386F /* AppDelegate.swift */,
-				49B662C42147214D000B386F /* ViewController.swift */,
 				49B662C62147214D000B386F /* Main.storyboard */,
 				49B662CC2147214E000B386F /* Assets.xcassets */,
 				49B662CE2147214E000B386F /* LaunchScreen.storyboard */,
@@ -200,9 +233,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49B662C52147214D000B386F /* ViewController.swift in Sources */,
+				49B662C52147214D000B386F /* WorkoutController.swift in Sources */,
+				4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */,
 				49B662CB2147214D000B386F /* Ladder_App.xcdatamodeld in Sources */,
 				49B662C32147214D000B386F /* AppDelegate.swift in Sources */,
+				49F8E89F214927B600571179 /* CustomizeController.swift in Sources */,
+				4974FFEF2150D687006AFEA5 /* CustomizeTableViewData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Adf-tb-7im">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Adf-tb-7im">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,18 +13,67 @@
         <!--Setup-->
         <scene sceneID="Xsm-YG-wnv">
             <objects>
-                <viewController id="777-n3-LEg" sceneMemberID="viewController">
+                <viewController id="777-n3-LEg" customClass="CustomizeController" customModule="Ladder_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="so0-OF-dp2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Customize Workout" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAz-ph-GWp">
+                                <rect key="frame" x="37.5" y="44" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="2uN-pa-g27"/>
+                                    <constraint firstAttribute="height" constant="50" id="G6I-oA-tcU"/>
+                                </constraints>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bDh-US-y7T">
+                                <rect key="frame" x="0.0" y="94" width="375" height="524"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomizeCell" rowHeight="50" id="bd9-bQ-dsD" customClass="CustomizeCell" customModule="Ladder_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bd9-bQ-dsD" id="HMF-Dq-G0k">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Number of Ladders: 3" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zU0-jQ-oUL">
+                                                    <rect key="frame" x="24" y="0.0" width="311" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionTextView" destination="zU0-jQ-oUL" id="61K-ZG-gN7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.46274509803921571" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PAz-ph-GWp" firstAttribute="top" secondItem="MnI-sm-Cz1" secondAttribute="top" constant="24" id="0oF-3a-7yT"/>
+                            <constraint firstItem="PAz-ph-GWp" firstAttribute="centerX" secondItem="so0-OF-dp2" secondAttribute="centerX" id="5Ki-pT-Kz0"/>
+                            <constraint firstItem="bDh-US-y7T" firstAttribute="top" secondItem="PAz-ph-GWp" secondAttribute="bottom" id="MbC-F8-dTR"/>
+                            <constraint firstItem="MnI-sm-Cz1" firstAttribute="bottom" secondItem="bDh-US-y7T" secondAttribute="bottom" id="NKj-Un-SuV"/>
+                            <constraint firstItem="MnI-sm-Cz1" firstAttribute="trailing" secondItem="bDh-US-y7T" secondAttribute="trailing" id="VHN-R8-8CJ"/>
+                            <constraint firstItem="bDh-US-y7T" firstAttribute="leading" secondItem="MnI-sm-Cz1" secondAttribute="leading" id="ZTG-Po-5jB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MnI-sm-Cz1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setup" id="L1r-zU-gWp"/>
+                    <connections>
+                        <outlet property="customizeTableView" destination="bDh-US-y7T" id="66M-fG-gVv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbD-gH-mdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="545"/>
+            <point key="canvasLocation" x="1620" y="544.67766116941539"/>
         </scene>
         <!--Learn-->
         <scene sceneID="8dI-ZC-wkn">
@@ -33,7 +82,34 @@
                     <view key="view" contentMode="scaleToFill" id="Gfr-Sc-u0J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Why Ladder Workouts?" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKz-BR-sBG">
+                                <rect key="frame" x="37.5" y="44" width="300" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="anA-h8-Qhd"/>
+                                    <constraint firstAttribute="height" constant="60" id="tvW-Nh-cTh"/>
+                                </constraints>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-3F-SRu">
+                                <rect key="frame" x="37.5" y="112" width="300" height="498"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47843137254901957" green="0.7803921568627451" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mKz-BR-sBG" firstAttribute="top" secondItem="2iU-Y7-blv" secondAttribute="top" constant="24" id="Axn-Gj-aUw"/>
+                            <constraint firstItem="Gfx-3F-SRu" firstAttribute="trailing" secondItem="mKz-BR-sBG" secondAttribute="trailing" id="HEA-uC-YO6"/>
+                            <constraint firstItem="2iU-Y7-blv" firstAttribute="bottom" secondItem="Gfx-3F-SRu" secondAttribute="bottom" constant="8" id="HeH-2O-mbF"/>
+                            <constraint firstItem="Gfx-3F-SRu" firstAttribute="leading" secondItem="mKz-BR-sBG" secondAttribute="leading" id="UJh-Ns-jFS"/>
+                            <constraint firstItem="Gfx-3F-SRu" firstAttribute="top" secondItem="mKz-BR-sBG" secondAttribute="bottom" constant="8" id="XQx-3n-rhw"/>
+                            <constraint firstItem="mKz-BR-sBG" firstAttribute="centerX" secondItem="Gfr-Sc-u0J" secondAttribute="centerX" id="sWV-FN-N0p"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2iU-Y7-blv"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Learn" id="z95-Kg-gad"/>
@@ -41,23 +117,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03R-0o-5N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="1209"/>
+            <point key="canvasLocation" x="1620" y="1208.5457271364319"/>
         </scene>
         <!--Workout-->
         <scene sceneID="w0D-BH-eub">
             <objects>
-                <viewController id="8v4-83-14R" sceneMemberID="viewController">
+                <viewController id="8v4-83-14R" customClass="WorkoutController" customModule="Ladder_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t1q-Pc-Pd3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="30:00" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im2-3z-qyE">
+                                <rect key="frame" x="37.5" y="45" width="300" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="KHK-y3-XQV"/>
+                                    <constraint firstAttribute="height" constant="120" id="QGt-bI-B4Z"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="100"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Rest" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ug1-IE-Up9">
+                                <rect key="frame" x="16" y="185" width="343" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="qk0-cZ-d7Y"/>
+                                </constraints>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="50"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.65490196078431373" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ug1-IE-Up9" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="6k9-60-na1"/>
+                            <constraint firstItem="Ug1-IE-Up9" firstAttribute="leading" secondItem="Swb-Di-74J" secondAttribute="leading" constant="16" id="BBF-lq-QVb"/>
+                            <constraint firstItem="Ug1-IE-Up9" firstAttribute="top" secondItem="Im2-3z-qyE" secondAttribute="bottom" constant="20" id="Daf-7Q-37T"/>
+                            <constraint firstItem="Im2-3z-qyE" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="cDJ-yH-vlF"/>
+                            <constraint firstItem="Im2-3z-qyE" firstAttribute="top" secondItem="Swb-Di-74J" secondAttribute="top" constant="25" id="mvQ-0W-Gy6"/>
+                            <constraint firstItem="Swb-Di-74J" firstAttribute="trailing" secondItem="Ug1-IE-Up9" secondAttribute="trailing" constant="16" id="z72-Vn-cUH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Swb-Di-74J"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Workout" id="gba-ak-HZN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLV-Ie-D0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="-120"/>
+            <point key="canvasLocation" x="1620" y="-120.08995502248877"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AOB-gg-51b">
