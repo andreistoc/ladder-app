@@ -90,7 +90,17 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+//        if segue.identifier = "customizePickerSegue" {
+//
+//        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
+        print("Got here bucko")
+        self.performSegue(withIdentifier: "customizePickerSegue", sender: self)
     }
 }
