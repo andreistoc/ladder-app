@@ -182,9 +182,11 @@
 				TargetAttributes = {
 					49B662BE2147214D000B386F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					49B662D52147214F000B386F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 49B662BE2147214D000B386F;
 					};
 				};
@@ -407,7 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andreistoc.Ladder-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -425,7 +427,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andreistoc.Ladder-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -445,7 +447,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andreistoc.Ladder-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ladder App.app/Ladder App";
 			};
@@ -466,7 +468,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andreistoc.Ladder-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ladder App.app/Ladder App";
 			};
