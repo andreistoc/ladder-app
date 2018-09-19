@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974FFF021511B50006AFEA5 /* CustomizeCell.swift */; };
+		499ACDEE2152B3A900C3DB96 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499ACDED2152B3A900C3DB96 /* PickerController.swift */; };
 		49B662C32147214D000B386F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C22147214D000B386F /* AppDelegate.swift */; };
 		49B662C52147214D000B386F /* WorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C42147214D000B386F /* WorkoutController.swift */; };
 		49B662C82147214D000B386F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B662C62147214D000B386F /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		4974FFF021511B50006AFEA5 /* CustomizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCell.swift; sourceTree = "<group>"; };
+		499ACDED2152B3A900C3DB96 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		49B662BF2147214D000B386F /* Ladder App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ladder App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B662C22147214D000B386F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49B662C42147214D000B386F /* WorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				49B662C42147214D000B386F /* WorkoutController.swift */,
 				49F8E89E214927B600571179 /* CustomizeController.swift */,
+				499ACDED2152B3A900C3DB96 /* PickerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				49B662C52147214D000B386F /* WorkoutController.swift in Sources */,
 				4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */,
 				49B662CB2147214D000B386F /* Ladder_App.xcdatamodeld in Sources */,
+				499ACDEE2152B3A900C3DB96 /* PickerController.swift in Sources */,
 				49B662C32147214D000B386F /* AppDelegate.swift in Sources */,
 				49F8E89F214927B600571179 /* CustomizeController.swift in Sources */,
 			);

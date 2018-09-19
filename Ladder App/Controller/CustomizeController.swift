@@ -100,7 +100,6 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        print("Got here bucko")
-        self.performSegue(withIdentifier: "customizePickerSegue", sender: self)
+        print("Got here dude")
     }
 }
