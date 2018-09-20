@@ -15,15 +15,21 @@ class WorkoutController: UIViewController {
     let exerciseColor = #colorLiteral(red: 1, green: 0.368627451, blue: 0.3568627451, alpha: 1)
     
     //Data variables
-    var isAscending: Bool = true
+    var isAscending: Bool = false
     var isAntagonist: Bool = true
     var isWaving: Bool = true
-    var maximumReps: Int = 10
+    var maximumReps: Int = 9
     var timePerRep: Int = 5
     var restNeeded: Int = 30
     var setsDone: Int = 0
     var laddersToDo: Int = 1
     var laddersDone: Int = 0
+    
+    //State variables:
+    var isRunning: Bool = false
+    var preCount: Int = 5
+    var timeRemaining: Int = 100
+    var setsArray: [Int] = []
     
     //Labels
     @IBOutlet weak var timeDisplayTextView: UITextView!
@@ -54,19 +60,102 @@ class WorkoutController: UIViewController {
         statusTextView.text = ""
         nextTextView.text = ""
         nextTodoTextView.text = ""
-        multiStatusDisplayTextView.text = ""
+        multiStatusDisplayTextView.text = "Ladders selected: 2\nMaximum number of reps: 10\n Ladder type: Waving\nAntagonist training selected"
+        
+        //Populate sets array
+        populateSetsArray()
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func pauseStartResumeBtnPressed(_ sender: Any) {
+        
+        print("Start button pressed")
+        if !isRunning {
+            pauseStartResumeBtn.setTitle("Pause Workout", for: .normal)
+            isRunning = true
+            
+            preCount = 5
+            self.timeDisplayTextView.text = "00:0" + String(self.preCount)
+            self.statusTextView.text = "Get Ready!"
+            self.nextTextView.text = "Next:"
+            
+            updateMultiStatusDisplay()
+            
+            _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                if self.preCount > 1 {
+                    self.preCount = self.preCount - 1
+                    self.timeDisplayTextView.text = "00:0" + String(self.preCount)
+                    print(self.preCount)
+                } else {
+                    timer.invalidate()
+                }
+                
+            })
+        } else {
+            pauseStartResumeBtn.setTitle("Resume Workout", for: .normal)
+            isRunning = false
+        }
     }
     
-
+    func secondsToTimestamp(intSeconds:Int)->String {
+        let mins:Int = intSeconds/60
+        let secs:Int = intSeconds%60
+        
+        let strTimestamp:String = ((mins<10) ? "0" : "") + String(mins) + ":" + ((secs<10) ? "0" : "") + String(secs)
+        return strTimestamp
+    }
+    
+    
+    func updateMultiStatusDisplay() {
+        //Add ladders done to display
+        self.multiStatusDisplayTextView.text = "Ladders done: " + String(laddersDone) + "/" + String(laddersToDo) + "\n"
+        
+        //Add sets done to display
+        self.multiStatusDisplayTextView.text = self.multiStatusDisplayTextView.text + "Sets done in current ladder: " + String(setsDone) + "/" + String(maximumReps) + "\n"
+        
+        //Add timeRemaining to display
+        self.multiStatusDisplayTextView.text = self.multiStatusDisplayTextView.text + "Time remaining: " + secondsToTimestamp(intSeconds: timeRemaining)    }
+    
+    func populateSetsArray(){
+        if isAscending {
+            if isWaving{
+                for i in 1...maximumReps / 2 {
+                    setsArray.append(i)
+                    setsArray.append(maximumReps - i + 1)
+                }
+                
+                if maximumReps % 2 == 1 {
+                    setsArray.append(maximumReps / 2 + 1)
+                }
+            } else {
+                for i in 1...maximumReps {
+                    setsArray.append(i)
+                }
+            }
+        } else {
+            if isWaving{
+                for i in 1...maximumReps / 2 {
+                    setsArray.append(maximumReps - i + 1)
+                    setsArray.append(i)
+                }
+                
+                if maximumReps % 2 == 1 {
+                    setsArray.append(maximumReps / 2 + 1)
+                }
+            } else {
+                for i in 1...maximumReps {
+                    setsArray.append(maximumReps - i + 1)
+                }
+            }
+        }
+        print(setsArray)
+    }
+    
 }
 
