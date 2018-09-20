@@ -224,13 +224,26 @@
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Ladders done: 0/2 Sets done in current ladder: 2/10 Time remaining: 10:30" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f5J-Ua-UKL">
+                                <rect key="frame" x="37.5" y="477" width="300" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4YI-l4-xar"/>
+                                    <constraint firstAttribute="height" constant="120" id="xcM-qP-V4r"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.65490196078431373" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="f5J-Ua-UKL" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="32U-ZN-aKY"/>
                             <constraint firstItem="tkF-H5-s8T" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="4fs-G2-g5p"/>
                             <constraint firstItem="Ug1-IE-Up9" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="6k9-60-na1"/>
                             <constraint firstItem="Ug1-IE-Up9" firstAttribute="leading" secondItem="Swb-Di-74J" secondAttribute="leading" constant="16" id="BBF-lq-QVb"/>
                             <constraint firstItem="Ug1-IE-Up9" firstAttribute="top" secondItem="Im2-3z-qyE" secondAttribute="bottom" constant="20" id="Daf-7Q-37T"/>
+                            <constraint firstItem="f5J-Ua-UKL" firstAttribute="top" secondItem="0oy-PG-eca" secondAttribute="bottom" constant="24" id="KtK-gj-8bK"/>
                             <constraint firstItem="XTJ-vt-ALO" firstAttribute="top" secondItem="tkF-H5-s8T" secondAttribute="bottom" constant="8" id="Po8-9N-EZC"/>
                             <constraint firstItem="XTJ-vt-ALO" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="RYK-Y0-aEF"/>
                             <constraint firstItem="Im2-3z-qyE" firstAttribute="centerX" secondItem="t1q-Pc-Pd3" secondAttribute="centerX" id="cDJ-yH-vlF"/>
@@ -244,6 +257,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Workout" id="gba-ak-HZN"/>
                     <connections>
+                        <outlet property="multiStatusDisplayTextView" destination="f5J-Ua-UKL" id="c7D-cj-DF6"/>
                         <outlet property="nextTextView" destination="tkF-H5-s8T" id="Clo-gV-EMI"/>
                         <outlet property="nextTodoTextView" destination="XTJ-vt-ALO" id="ylF-u0-hje"/>
                         <outlet property="pauseStartResumeBtn" destination="0oy-PG-eca" id="dOW-e9-OwZ"/>

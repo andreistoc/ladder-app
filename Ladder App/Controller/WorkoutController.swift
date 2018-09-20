@@ -30,6 +30,8 @@ class WorkoutController: UIViewController {
     @IBOutlet weak var statusTextView: UITextView!
     @IBOutlet weak var nextTodoTextView: UITextView!
     @IBOutlet weak var nextTextView: UITextView!
+    @IBOutlet weak var multiStatusDisplayTextView: UITextView!
+    
     
     //Start button
     @IBOutlet weak var pauseStartResumeBtn: UIButton!
@@ -52,7 +54,7 @@ class WorkoutController: UIViewController {
         statusTextView.text = ""
         nextTextView.text = ""
         nextTodoTextView.text = ""
-        
+        multiStatusDisplayTextView.text = ""
         
         
     }
