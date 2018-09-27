@@ -27,7 +27,7 @@ class WorkoutController: UIViewController {
     
     //State variables:
     var isRunning = false
-    var preCount = 5
+    var preCountTimeRemaining = 5
     var isWorkout = false
     var totalTimeRemaining = 0
     var setsArray: [Int] = []
@@ -83,7 +83,6 @@ class WorkoutController: UIViewController {
         
         
         
-        
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
@@ -99,6 +98,11 @@ class WorkoutController: UIViewController {
             
             
             //Re-retrieve data from user defaults
+            
+            
+            
+            //Reset variables
+            preCountTimeRemaining = 5
         }
         pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
     }
@@ -107,8 +111,14 @@ class WorkoutController: UIViewController {
         if !isRunning {
             isRunning = true
             pauseStartResumeBtn.setTitle("Pause", for: .normal)
+            preCountIteration()
             workoutTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                 print("Timer Running")
+                if self.preCountTimeRemaining > 0 {
+                    self.preCountIteration()
+                } else {
+                    
+                }
             })
         } else {
             isRunning = false
@@ -171,8 +181,21 @@ class WorkoutController: UIViewController {
         }
         print(setsArray)
     }
+}
+
+extension WorkoutController {
     
+    func preCountIteration(){
+        timeDisplayTextView.text = "00:0" + String(preCountTimeRemaining)
+        statusTextView.text = "Get Ready!"
+        nextTodoTextView.text = String(setsArray[0]) + " Reps"
+        preCountTimeRemaining -= 1
+        updateMultiStatusDisplay()
+    }
     
+    func workoutIteration(){
+        
+    }
     
 }
 
