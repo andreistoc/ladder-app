@@ -15,21 +15,25 @@ class WorkoutController: UIViewController {
     let exerciseColor = #colorLiteral(red: 1, green: 0.368627451, blue: 0.3568627451, alpha: 1)
     
     //Data variables
-    var isAscending: Bool = false
-    var isAntagonist: Bool = true
-    var isWaving: Bool = true
-    var maximumReps: Int = 9
-    var timePerRep: Int = 5
-    var restNeeded: Int = 30
-    var setsDone: Int = 0
-    var laddersToDo: Int = 1
-    var laddersDone: Int = 0
+    var isAscending = false
+    var isAntagonist = true
+    var isWaving = true
+    var maximumReps = 9
+    var timePerRep = 5
+    var restPerRep = 5
+    var setsDone = 0
+    var laddersToDo = 2
+    var laddersDone = 0
     
     //State variables:
-    var isRunning: Bool = false
-    var preCount: Int = 5
-    var timeRemaining: Int = 100
+    var isRunning = false
+    var preCount = 5
+    var isWorkout = false
+    var totalTimeRemaining = 0
     var setsArray: [Int] = []
+    var currentSet = 1
+    var setTime = 0
+    var restTime = 0
     
     //Labels
     @IBOutlet weak var timeDisplayTextView: UITextView!
@@ -39,15 +43,21 @@ class WorkoutController: UIViewController {
     @IBOutlet weak var multiStatusDisplayTextView: UITextView!
     
     
-    //Start button
+    //Buttons
     @IBOutlet weak var pauseStartResumeBtn: UIButton!
+    @IBOutlet weak var resetBtn: UIButton!
+    
+    //Timer
+    var workoutTimer = Timer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //Customize start button
+        //Customize buttons
         pauseStartResumeBtn.layer.cornerRadius = 16
+        resetBtn.layer.cornerRadius = 8
         
         //Set background color
         self.view.backgroundColor = restColor
@@ -65,41 +75,46 @@ class WorkoutController: UIViewController {
         //Populate sets array
         populateSetsArray()
         
+        //Calculate total workout time
+        totalTimeRemaining = 0
+        for i in 1...setsArray.count {
+            totalTimeRemaining += setsArray[i-1] * timePerRep * 2
+        }
+        
+        
+        
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func resetBtnPressed(_ sender: Any) {
+        if isRunning {
+            workoutTimer.invalidate()
+            
+            //Set initial clear labels
+            timeDisplayTextView.text = ""
+            statusTextView.text = ""
+            nextTextView.text = ""
+            nextTodoTextView.text = ""
+            multiStatusDisplayTextView.text = "Ladders selected: 2\nMaximum number of reps: 10\n Ladder type: Waving\nAntagonist training selected"
+            
+            
+            //Re-retrieve data from user defaults
+        }
+        pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
     }
     
     @IBAction func pauseStartResumeBtnPressed(_ sender: Any) {
-        
-        print("Start button pressed")
         if !isRunning {
-            pauseStartResumeBtn.setTitle("Pause Workout", for: .normal)
             isRunning = true
-            
-            preCount = 5
-            self.timeDisplayTextView.text = "00:0" + String(self.preCount)
-            self.statusTextView.text = "Get Ready!"
-            self.nextTextView.text = "Next:"
-            
-            updateMultiStatusDisplay()
-            
-            _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-                if self.preCount > 1 {
-                    self.preCount = self.preCount - 1
-                    self.timeDisplayTextView.text = "00:0" + String(self.preCount)
-                    print(self.preCount)
-                } else {
-                    timer.invalidate()
-                }
-                
+            pauseStartResumeBtn.setTitle("Pause", for: .normal)
+            workoutTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                print("Timer Running")
             })
         } else {
-            pauseStartResumeBtn.setTitle("Resume Workout", for: .normal)
             isRunning = false
+            pauseStartResumeBtn.setTitle("Resume", for: .normal)
+            workoutTimer.invalidate()
+            print("Timer Paused")
         }
     }
     
@@ -120,7 +135,7 @@ class WorkoutController: UIViewController {
         self.multiStatusDisplayTextView.text = self.multiStatusDisplayTextView.text + "Sets done in current ladder: " + String(setsDone) + "/" + String(maximumReps) + "\n"
         
         //Add timeRemaining to display
-        self.multiStatusDisplayTextView.text = self.multiStatusDisplayTextView.text + "Time remaining: " + secondsToTimestamp(intSeconds: timeRemaining)    }
+        self.multiStatusDisplayTextView.text = self.multiStatusDisplayTextView.text + "Time remaining: " + secondsToTimestamp(intSeconds: totalTimeRemaining)    }
     
     func populateSetsArray(){
         if isAscending {
@@ -156,6 +171,8 @@ class WorkoutController: UIViewController {
         }
         print(setsArray)
     }
+    
+    
     
 }
 

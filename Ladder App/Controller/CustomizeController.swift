@@ -18,7 +18,8 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     var isWaving: Bool = true
     var maximumReps: Int = 10
     var timePerRep: Int = 5
-    var restNeeded: Int = 30
+    var restPerRep: Int = 8
+    var numberOfLadders: Int = 2
     
     
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,7 +82,9 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
         case 4:
             cell.descriptionTextView.text = "Time per repetition: " + String(timePerRep)
         case 5:
-            cell.descriptionTextView.text = "Rest needed: " + String(timePerRep)
+            cell.descriptionTextView.text = "Rest needed per rep: " + String(restPerRep)
+        case 6:
+            cell.descriptionTextView.text = "Number of ladders to do: " + String(numberOfLadders)
         default:
             break
         }
