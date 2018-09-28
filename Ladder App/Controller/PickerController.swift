@@ -10,28 +10,77 @@ import UIKit
 
 class PickerController: UIViewController {
     
+    //The number of the cell that was selected when customizing
     var customizeCellSelected = 0
+    
+    //Picker Outlet
+    @IBOutlet weak var optionPicker: UIPickerView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print(customizeCellSelected)
+        choosePicker()
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func choosePicker(){
+        switch customizeCellSelected {
+        case 0:
+            ascendingDescending()
+        case 1:
+            wavingOrNot()
+        case 2:
+            maximumNumberOfReps()
+        case 3:
+            timePerRepetition()
+        case 4:
+            restPerRep()
+        case 5:
+            laddersToDo()
+        case 6:
+            restBetweenLadders()
+        default:
+            break
+        }
     }
-    */
+    
+    
+}
 
+extension PickerController {
+    //Contains the functions that create each picker option depending on customize selection
+    func ascendingDescending(){
+        
+    }
+    
+    func wavingOrNot(){
+        
+    }
+    
+    func maximumNumberOfReps(){
+        
+    }
+    
+    func timePerRepetition(){
+        
+    }
+    
+    func restPerRep () {
+        
+    }
+    
+    func laddersToDo () {
+        
+    }
+    
+    func restBetweenLadders () {
+        
+    }
+    
 }

@@ -113,6 +113,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lkw-vO-rwS"/>
                     </view>
+                    <connections>
+                        <outlet property="optionPicker" destination="6fo-Gr-8Dw" id="8pK-kg-CJS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpo-tT-Ugb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
