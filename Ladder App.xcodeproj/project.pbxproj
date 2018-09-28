@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495077DE215E9896006B8CEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495077DD215E9896006B8CEB /* AVFoundation.framework */; };
 		4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974FFF021511B50006AFEA5 /* CustomizeCell.swift */; };
 		499ACDEE2152B3A900C3DB96 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499ACDED2152B3A900C3DB96 /* PickerController.swift */; };
 		49B662C32147214D000B386F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C22147214D000B386F /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		495077DD215E9896006B8CEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4974FFF021511B50006AFEA5 /* CustomizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCell.swift; sourceTree = "<group>"; };
 		499ACDED2152B3A900C3DB96 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		49B662BF2147214D000B386F /* Ladder App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ladder App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495077DE215E9896006B8CEB /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,12 +92,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		495077DC215E9896006B8CEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				495077DD215E9896006B8CEB /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		49B662B62147214D000B386F = {
 			isa = PBXGroup;
 			children = (
 				49B662C12147214D000B386F /* Ladder App */,
 				49B662D92147214F000B386F /* Ladder AppTests */,
 				49B662C02147214D000B386F /* Products */,
+				495077DC215E9896006B8CEB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -403,14 +415,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PA3CQKBV4P;
 				INFOPLIST_FILE = "Ladder App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andreistoc.Ladder-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreistoc.ladders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -421,14 +434,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PA3CQKBV4P;
 				INFOPLIST_FILE = "Ladder App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andreistoc.Ladder-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreistoc.ladders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

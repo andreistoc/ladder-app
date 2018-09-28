@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class WorkoutController: UIViewController {
     
@@ -16,24 +17,27 @@ class WorkoutController: UIViewController {
     
     //Data variables
     var isAscending = false
-    var isAntagonist = true
     var isWaving = true
-    var maximumReps = 9
-    var timePerRep = 5
+    var maximumReps = 3
+    var timePerRep = 3
     var restPerRep = 5
-    var setsDone = 0
     var laddersToDo = 2
-    var laddersDone = 0
+    var restBetweenLadders = 10
+    
     
     //State variables:
     var isRunning = false
     var preCountTimeRemaining = 5
-    var isWorkout = false
+    var isWorkout = true
     var totalTimeRemaining = 0
     var setsArray: [Int] = []
-    var currentSet = 1
-    var setTime = 0
-    var restTime = 0
+    var setTimesArray: [Int] = []
+    var restTimesArray: [Int] = []
+    var setTimeRemaining = 0
+    var restTimeRemaining = 0
+    var setsDone = 0
+    var laddersDone = 0
+    var ladderRestTimeRemaining = 10
     
     //Labels
     @IBOutlet weak var timeDisplayTextView: UITextView!
@@ -49,6 +53,10 @@ class WorkoutController: UIViewController {
     
     //Timer
     var workoutTimer = Timer()
+    
+    //Speech variables
+    let synth = AVSpeechSynthesizer()
+    var utterance = AVSpeechUtterance(string: "")
     
     
     override func viewDidLoad() {
@@ -70,61 +78,145 @@ class WorkoutController: UIViewController {
         statusTextView.text = ""
         nextTextView.text = ""
         nextTodoTextView.text = ""
-        multiStatusDisplayTextView.text = "Ladders selected: 2\nMaximum number of reps: 10\n Ladder type: Waving\nAntagonist training selected"
+        setInitialMultiStatusDisplay()
         
         //Populate sets array
         populateSetsArray()
         
+        //Calculate rep times and rest times
+        restTimesArray = setsArray.map({return $0 * restPerRep})
+        setTimesArray = setsArray.map({return $0 * timePerRep})
+        
+        print(restTimesArray)
+        print(setTimesArray)
+        
         //Calculate total workout time
-        totalTimeRemaining = 0
-        for i in 1...setsArray.count {
-            totalTimeRemaining += setsArray[i-1] * timePerRep * 2
-        }
         
+        calculateTotalTimeRemaining()
         
-        
+        //Set utterance rate
+        utterance.rate = 0.1
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
         if isRunning {
             workoutTimer.invalidate()
-            
-            //Set initial clear labels
-            timeDisplayTextView.text = ""
-            statusTextView.text = ""
-            nextTextView.text = ""
-            nextTodoTextView.text = ""
-            multiStatusDisplayTextView.text = "Ladders selected: 2\nMaximum number of reps: 10\n Ladder type: Waving\nAntagonist training selected"
-            
-            
-            //Re-retrieve data from user defaults
-            
-            
-            
-            //Reset variables
-            preCountTimeRemaining = 5
         }
+        
+        //Set initial clear labels
+        timeDisplayTextView.text = ""
+        statusTextView.text = ""
+        nextTextView.text = ""
+        nextTodoTextView.text = ""
+        setInitialMultiStatusDisplay()
+        
+        
+        //Re-retrieve data from user defaults
+        isRunning = false
+        preCountTimeRemaining = 5
+        isWorkout = true
+        setTimeRemaining = 0
+        restTimeRemaining = 0
+        setsDone = 0
+        laddersDone = 0
+        ladderRestTimeRemaining = 10
+        
+        calculateTotalTimeRemaining()
+        
+        //Reset variables
+        preCountTimeRemaining = 5
+        
         pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
     }
     
     @IBAction func pauseStartResumeBtnPressed(_ sender: Any) {
+        nextTextView.text = "Next:"
         if !isRunning {
             isRunning = true
             pauseStartResumeBtn.setTitle("Pause", for: .normal)
-            preCountIteration()
-            workoutTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-                print("Timer Running")
+            if preCountTimeRemaining > 0 {
+                utterance = AVSpeechUtterance(string: "get ready!")
+                synth.speak(utterance)
+                preCountIteration()
+            }
+            workoutTimer = Timer.scheduledTimer(withTimeInterval: 0.75, repeats: true, block: { (timer) in
+                
                 if self.preCountTimeRemaining > 0 {
                     self.preCountIteration()
+                    if self.preCountTimeRemaining == 1 {
+                        self.utterance = AVSpeechUtterance(string: "Do " + String(self.setsArray[self.setsDone]) + " reps!")
+                        self.synth.speak(self.utterance)
+                    }
                 } else {
-                    
+                    if self.laddersDone < self.laddersToDo {
+                        
+                        if self.setsDone == self.setsArray.count {
+                            if self.ladderRestTimeRemaining > 0 && self.laddersDone < self.laddersToDo - 1 && self.setsDone != 0{
+                                
+                                if self.ladderRestTimeRemaining == self.restBetweenLadders {
+                                    self.utterance = AVSpeechUtterance(string: "Rest until the next ladder starts!")
+                                    self.synth.speak(self.utterance)
+                                }
+                                self.ladderRestIteration()
+                                
+                            } else {
+                                self.setsDone = 0
+                                self.laddersDone += 1
+                                self.setTimeRemaining = self.setTimesArray[0]
+                                self.restTimeRemaining = self.restTimesArray[0]
+                                self.ladderRestTimeRemaining = self.restBetweenLadders
+                                self.isWorkout = true
+                                if self.laddersDone < self.laddersToDo {
+                                    self.utterance = AVSpeechUtterance(string: "Do " + String(self.setsArray[self.setsDone]) + " reps!")
+                                    self.synth.speak(self.utterance)
+                                }
+                            }
+                        } else {
+                            if self.isWorkout {
+                                self.workoutIteration()
+                                if self.setTimeRemaining == 0 {
+                                    self.isWorkout = false
+                                    self.utterance = AVSpeechUtterance(string: "Rest!")
+                                    self.synth.speak(self.utterance)
+                                }
+                                
+                                
+                                
+                                
+                            } else {
+                                self.restIteration()
+                                if self.restTimeRemaining == 0 {
+                                    self.setsDone += 1
+                                    print("Sets done: \(self.setsDone), Total sets: \(self.maximumReps)")
+                                    if self.setsDone < self.maximumReps {
+                                        self.setTimeRemaining = self.setTimesArray[self.setsDone]
+                                        self.restTimeRemaining = self.restTimesArray[self.setsDone]
+                                        self.isWorkout = true
+                                        self.utterance = AVSpeechUtterance(string: "Do " + String(self.setsArray[self.setsDone]) + " reps!")
+                                        self.synth.speak(self.utterance)
+                                    }
+                                }
+                                
+                                
+                                
+                            }
+                        }
+                        
+                        
+                        
+                        
+                    } else {
+                        self.finishWorkout()
+                        self.utterance = AVSpeechUtterance(string: "Workout done! Great job!")
+                        self.synth.speak(self.utterance)
+                        self.workoutTimer.invalidate()
+                    }
                 }
             })
         } else {
             isRunning = false
             pauseStartResumeBtn.setTitle("Resume", for: .normal)
             workoutTimer.invalidate()
-            print("Timer Paused")
         }
     }
     
@@ -189,13 +281,78 @@ extension WorkoutController {
         timeDisplayTextView.text = "00:0" + String(preCountTimeRemaining)
         statusTextView.text = "Get Ready!"
         nextTodoTextView.text = String(setsArray[0]) + " Reps"
-        preCountTimeRemaining -= 1
         updateMultiStatusDisplay()
+        preCountTimeRemaining -= 1
+        totalTimeRemaining -= 1
     }
     
     func workoutIteration(){
+        updateMultiStatusDisplay()
+        timeDisplayTextView.text = secondsToTimestamp(intSeconds: setTimeRemaining)
+        statusTextView.text = "Do " + String(setsArray[setsDone]) + " reps"
+        nextTodoTextView.text = "Rest"
+        totalTimeRemaining -= 1
+        setTimeRemaining -= 1
         
     }
     
+    func restIteration(){
+        updateMultiStatusDisplay()
+        timeDisplayTextView.text = secondsToTimestamp(intSeconds: restTimeRemaining)
+        statusTextView.text = "Rest"
+        if setsDone < maximumReps - 1 {
+            nextTodoTextView.text = "Do " + String(setsArray[setsDone + 1]) + " reps"
+        }
+        totalTimeRemaining -= 1
+        restTimeRemaining -= 1
+    }
+    
+    func finishWorkout(){
+        timeDisplayTextView.text = ""
+        statusTextView.text = "Done!"
+        nextTextView.text = "Great job!"
+        nextTodoTextView.text = ""
+        setInitialMultiStatusDisplay()
+    }
+    
+    func ladderRestIteration(){
+        updateMultiStatusDisplay()
+        timeDisplayTextView.text = secondsToTimestamp(intSeconds: ladderRestTimeRemaining)
+        statusTextView.text = "Rest"
+        nextTodoTextView.text = "Do " + String(setsArray[0]) + " reps"
+        totalTimeRemaining -= 1
+        ladderRestTimeRemaining -= 1
+    }
+    
+    func calculateTotalTimeRemaining() {
+        //Add length of sets and rests between sets
+        totalTimeRemaining = setTimesArray.reduce(0, +) + restTimesArray.reduce(0, +)
+        //Multiply by the number of ladders to do
+        totalTimeRemaining *= laddersToDo
+        //Add the length of the pre count
+        totalTimeRemaining += 5
+        //Add the rest between the ladders
+        totalTimeRemaining += (laddersToDo - 1) * restBetweenLadders
+        
+        setTimeRemaining = setTimesArray[0]
+        restTimeRemaining = restTimesArray[0]
+    }
+    
+    func setInitialMultiStatusDisplay() {
+        var stringToDisplay = "Ladders selected: \(laddersToDo)\nMaximum number of reps: \(maximumReps)\n"
+        
+        if isWaving {
+            stringToDisplay += "Ladder type: Waving\n"
+        } else {
+            if isAscending {
+                stringToDisplay += "Ladder type: Ascending\n"
+            } else {
+                stringToDisplay += "Ladder type: Descending\n"
+            }
+        }
+        
+        
+        multiStatusDisplayTextView.text = stringToDisplay
+    }
 }
 

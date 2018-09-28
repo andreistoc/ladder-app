@@ -14,12 +14,12 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var customizeTableView: UITableView!
     
     var isAscending: Bool = true
-    var isAntagonist: Bool = true
     var isWaving: Bool = true
     var maximumReps: Int = 10
     var timePerRep: Int = 5
     var restPerRep: Int = 8
     var numberOfLadders: Int = 2
+    var restBetweenLadders: Int = 300
     
     
     override func viewDidLoad() {
@@ -62,14 +62,6 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             cell.descriptionTextView.text = "Direction: " + directionString
         case 1:
-            let antagonistString: String
-            if isAntagonist {
-                antagonistString = "YES"
-            } else {
-                antagonistString = "NO"
-            }
-            cell.descriptionTextView.text = "Antagonist training: " + antagonistString
-        case 2:
             let wavingString: String
             if isWaving {
                 wavingString = "YES"
@@ -77,14 +69,16 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
                 wavingString = "NO"
             }
             cell.descriptionTextView.text = "Waving ladder: " + wavingString
-        case 3:
+        case 2:
             cell.descriptionTextView.text = "Maximum number of reps: " + String(maximumReps)
+        case 3:
+            cell.descriptionTextView.text = "Time per repetition: " + String(timePerRep) + " seconds"
         case 4:
-            cell.descriptionTextView.text = "Time per repetition: " + String(timePerRep)
+            cell.descriptionTextView.text = "Rest needed per rep: " + String(restPerRep) + " seconds"
         case 5:
-            cell.descriptionTextView.text = "Rest needed per rep: " + String(restPerRep)
-        case 6:
             cell.descriptionTextView.text = "Number of ladders to do: " + String(numberOfLadders)
+        case 6:
+            cell.descriptionTextView.text = "Rest between ladders: " + String(restBetweenLadders/60) + " minutes"
         default:
             break
         }
