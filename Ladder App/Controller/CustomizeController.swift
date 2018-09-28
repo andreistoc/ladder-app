@@ -24,14 +24,14 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         customizeTableView.dataSource = self
         customizeTableView.delegate = self
         customizeTableView.separatorStyle = .singleLine
         customizeTableView.tableFooterView = UIView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,21 +82,20 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
         default:
             break
         }
-
-
+        
+        
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-//        if segue.identifier = "customizePickerSegue" {
-//
-//        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.row
-        print("Got here dude")
+        if segue.identifier == "pickerSegue" {
+            if let indexPath = customizeTableView.indexPathForSelectedRow {
+                let controller = segue.destination as! PickerController
+                let value = indexPath.row
+                controller.customizeCellSelected = value
+            }
+        }
     }
 }

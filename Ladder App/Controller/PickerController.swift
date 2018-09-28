@@ -9,11 +9,14 @@
 import UIKit
 
 class PickerController: UIViewController {
+    
+    var customizeCellSelected = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print(customizeCellSelected)
     }
     
     override var prefersStatusBarHidden: Bool {

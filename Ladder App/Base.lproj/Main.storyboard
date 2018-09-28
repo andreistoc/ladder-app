@@ -50,7 +50,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionTextView" destination="zU0-jQ-oUL" id="61K-ZG-gN7"/>
-                                            <segue destination="z5M-w4-9B1" kind="show" id="don-J3-L5x"/>
+                                            <segue destination="z5M-w4-9B1" kind="show" identifier="pickerSegue" id="D8J-kg-Xki"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
