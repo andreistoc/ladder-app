@@ -115,6 +115,7 @@
                     </view>
                     <connections>
                         <outlet property="optionPicker" destination="6fo-Gr-8Dw" id="8pK-kg-CJS"/>
+                        <outlet property="titleTextView" destination="CW4-hf-1be" id="B3k-ZV-pIa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpo-tT-Ugb" userLabel="First Responder" sceneMemberID="firstResponder"/>

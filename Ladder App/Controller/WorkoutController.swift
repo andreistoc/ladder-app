@@ -139,7 +139,7 @@ class WorkoutController: UIViewController {
                 synth.speak(utterance)
                 preCountIteration()
             }
-            workoutTimer = Timer.scheduledTimer(withTimeInterval: 0.75, repeats: true, block: { (timer) in
+            workoutTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                 
                 if self.preCountTimeRemaining > 0 {
                     self.preCountIteration()

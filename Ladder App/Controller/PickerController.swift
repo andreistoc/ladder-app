@@ -8,21 +8,42 @@
 
 import UIKit
 
-class PickerController: UIViewController {
+class PickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //The number of the cell that was selected when customizing
     var customizeCellSelected = 0
     
+    var ascendingDescending = ["Ascending", "Descending"]
+    var wavingOrNot = ["Simple", "Waving"]
+    var maximumNumberOfReps: [Int] = []
+    var timePerRepetition: [Int] = []
+    var restPerRepetition: [Int] = []
+    var laddersToDo: [Int] = []
+    var restBetweenLadders: [Int] = []
+    
+    //Array that stores the data used
+    var arrayToUse: [String] = []
+    
+    
     //Picker Outlet
     @IBOutlet weak var optionPicker: UIPickerView!
+    @IBOutlet weak var titleTextView: UITextView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        maximumNumberOfReps = Array(3...20)
+        timePerRepetition = Array(2...10)
+        restPerRepetition = Array(2...10)
+        laddersToDo = Array(1...10)
+        restBetweenLadders = Array(1...10)
+        
         // Do any additional setup after loading the view.
         print(customizeCellSelected)
         choosePicker()
+        
+        optionPicker.dataSource = self
+        optionPicker.delegate = self
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -32,19 +53,19 @@ class PickerController: UIViewController {
     func choosePicker(){
         switch customizeCellSelected {
         case 0:
-            ascendingDescending()
+            arrayToUse = ascendingDescending
         case 1:
-            wavingOrNot()
+            arrayToUse = wavingOrNot
         case 2:
-            maximumNumberOfReps()
+            arrayToUse = convertToStringArray(arrayToConvert: maximumNumberOfReps)
         case 3:
-            timePerRepetition()
+            arrayToUse = convertToStringArray(arrayToConvert: timePerRepetition)
         case 4:
-            restPerRep()
+            arrayToUse = convertToStringArray(arrayToConvert: restPerRepetition)
         case 5:
-            laddersToDo()
+            arrayToUse = convertToStringArray(arrayToConvert: laddersToDo)
         case 6:
-            restBetweenLadders()
+            arrayToUse = convertToStringArray(arrayToConvert: restBetweenLadders)
         default:
             break
         }
@@ -55,32 +76,31 @@ class PickerController: UIViewController {
 
 extension PickerController {
     //Contains the functions that create each picker option depending on customize selection
-    func ascendingDescending(){
-        
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func wavingOrNot(){
-        
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return arrayToUse.count
     }
     
-    func maximumNumberOfReps(){
-        
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return arrayToUse[row]
     }
     
-    func timePerRepetition(){
-        
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        return
     }
     
-    func restPerRep () {
+    func convertToStringArray(arrayToConvert: [Int]) -> [String] {
         
-    }
-    
-    func laddersToDo () {
+        var finalArray: [String] = []
         
-    }
-    
-    func restBetweenLadders () {
+        for i in 0...arrayToConvert.count - 1 {
+            finalArray.append(String(arrayToConvert[i]))
+        }
         
+        return finalArray
     }
-    
 }
