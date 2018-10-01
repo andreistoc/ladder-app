@@ -176,6 +176,7 @@ class WorkoutController: UIViewController {
                                 self.workoutIteration()
                                 if self.setTimeRemaining == 0 {
                                     self.isWorkout = false
+                                    self.view.backgroundColor = self.restColor
                                     self.utterance = AVSpeechUtterance(string: "Rest!")
                                     self.synth.speak(self.utterance)
                                 }
@@ -192,6 +193,7 @@ class WorkoutController: UIViewController {
                                         self.setTimeRemaining = self.setTimesArray[self.setsDone]
                                         self.restTimeRemaining = self.restTimesArray[self.setsDone]
                                         self.isWorkout = true
+                                        self.view.backgroundColor = self.exerciseColor
                                         self.utterance = AVSpeechUtterance(string: "Do " + String(self.setsArray[self.setsDone]) + " reps!")
                                         self.synth.speak(self.utterance)
                                     }

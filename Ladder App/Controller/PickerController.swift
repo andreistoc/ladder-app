@@ -44,6 +44,7 @@ class PickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
         optionPicker.dataSource = self
         optionPicker.delegate = self
+        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -116,5 +117,9 @@ extension PickerController {
         }
         
         return finalArray
+    }
+    
+    func loadUserDefaults(){
+        
     }
 }
