@@ -58,10 +58,13 @@ class WorkoutController: UIViewController {
     let synth = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         //Customize buttons
         pauseStartResumeBtn.layer.cornerRadius = 16
@@ -72,6 +75,12 @@ class WorkoutController: UIViewController {
         
         //Set start button
         pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
+        
+        //Generate UserDefaults at first run
+        
+        if  !isAppAlreadyLaunchedOnce() {
+            writeDataToUserDefaults()
+        }
         
         //Set initial clear labels
         timeDisplayTextView.text = ""
@@ -96,12 +105,19 @@ class WorkoutController: UIViewController {
         
         //Set utterance rate
         utterance.rate = 0.1
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getDataFromUserDefaults()
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
         if isRunning {
             workoutTimer.invalidate()
         }
+        
+        getDataFromUserDefaults()
         
         //Set initial clear labels
         timeDisplayTextView.text = ""
@@ -355,6 +371,45 @@ extension WorkoutController {
         
         
         multiStatusDisplayTextView.text = stringToDisplay
+    }
+    
+    
+    func getDataFromUserDefaults() {
+        //Get data from user defaults
+        isAscending = UserDefaults.standard.bool(forKey: DefaultsKeys.isAscendingKey)
+        isWaving = UserDefaults.standard.bool(forKey: DefaultsKeys.isWavingKey)
+        maximumReps = UserDefaults.standard.integer(forKey: DefaultsKeys.maximumRepsKey)
+        timePerRep = UserDefaults.standard.integer(forKey: DefaultsKeys.timePerRepKey)
+        restPerRep = UserDefaults.standard.integer(forKey: DefaultsKeys.restPerRepKey)
+        laddersToDo = UserDefaults.standard.integer(forKey: DefaultsKeys.laddersToDoKey)
+        restBetweenLadders = UserDefaults.standard.integer(forKey: DefaultsKeys.restBetweenLaddersKey)
+    }
+    
+    func writeDataToUserDefaults() {
+        UserDefaults.standard.set(isAscending, forKey: DefaultsKeys.isAscendingKey)
+        UserDefaults.standard.set(isWaving, forKey: DefaultsKeys.isWavingKey)
+        UserDefaults.standard.set(maximumReps, forKey: DefaultsKeys.maximumRepsKey)
+        UserDefaults.standard.set(timePerRep, forKey: DefaultsKeys.timePerRepKey)
+        UserDefaults.standard.set(restPerRep, forKey: DefaultsKeys.restPerRepKey)
+        UserDefaults.standard.set(laddersToDo, forKey: DefaultsKeys.laddersToDoKey)
+        UserDefaults.standard.set(restBetweenLadders, forKey: DefaultsKeys.restBetweenLaddersKey)
+    }
+}
+
+
+//Function that detects the first time the app runs
+extension WorkoutController {
+    func isAppAlreadyLaunchedOnce()->Bool{
+        let defaults = UserDefaults.standard
+        
+        if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+            print("App already launched : \(isAppAlreadyLaunchedOnce)")
+            return true
+        }else{
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("App launched first time")
+            return false
+        }
     }
 }
 

@@ -91,7 +91,33 @@ extension PickerController {
 //    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        return
+        switch customizeCellSelected {
+        case 0:
+            if row == 0 {
+                UserDefaults.standard.set(true, forKey: DefaultsKeys.isAscendingKey)
+            } else {
+                UserDefaults.standard.set(false, forKey: DefaultsKeys.isAscendingKey)
+            }
+        case 1:
+            if row == 0 {
+                UserDefaults.standard.set(true, forKey: DefaultsKeys.isWavingKey)
+            } else {
+                UserDefaults.standard.set(false, forKey: DefaultsKeys.isWavingKey)
+            }
+        case 2:
+            UserDefaults.standard.set(row + 3, forKey: DefaultsKeys.maximumRepsKey)
+        case 3:
+            UserDefaults.standard.set(row + 2, forKey: DefaultsKeys.timePerRepKey)
+        case 4:
+            UserDefaults.standard.set(row + 2, forKey: DefaultsKeys.restPerRepKey)
+        case 5:
+            UserDefaults.standard.set(row + 1, forKey: DefaultsKeys.laddersToDoKey)
+        case 6:
+            UserDefaults.standard.set((row + 1) * 60, forKey: DefaultsKeys.restBetweenLaddersKey)
+        default:
+            break
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

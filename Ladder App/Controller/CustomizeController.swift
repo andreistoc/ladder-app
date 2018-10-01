@@ -32,6 +32,12 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
         customizeTableView.tableFooterView = UIView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        getDataFromUserDefaults()
+        print("VIEW DID APPEAR M8")
+        customizeTableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -97,5 +103,26 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
                 controller.customizeCellSelected = value
             }
         }
+    }
+    
+    func getDataFromUserDefaults() {
+        //Get data from user defaults
+        isAscending = UserDefaults.standard.bool(forKey: DefaultsKeys.isAscendingKey)
+        isWaving = UserDefaults.standard.bool(forKey: DefaultsKeys.isWavingKey)
+        maximumReps = UserDefaults.standard.integer(forKey: DefaultsKeys.maximumRepsKey)
+        timePerRep = UserDefaults.standard.integer(forKey: DefaultsKeys.timePerRepKey)
+        restPerRep = UserDefaults.standard.integer(forKey: DefaultsKeys.restPerRepKey)
+        numberOfLadders = UserDefaults.standard.integer(forKey: DefaultsKeys.laddersToDoKey)
+        restBetweenLadders = UserDefaults.standard.integer(forKey: DefaultsKeys.restBetweenLaddersKey)
+    }
+    
+    func writeDataToUserDefaults() {
+        UserDefaults.standard.set(isAscending, forKey: DefaultsKeys.isAscendingKey)
+        UserDefaults.standard.set(isWaving, forKey: DefaultsKeys.isWavingKey)
+        UserDefaults.standard.set(maximumReps, forKey: DefaultsKeys.maximumRepsKey)
+        UserDefaults.standard.set(timePerRep, forKey: DefaultsKeys.timePerRepKey)
+        UserDefaults.standard.set(restPerRep, forKey: DefaultsKeys.restPerRepKey)
+        UserDefaults.standard.set(numberOfLadders, forKey: DefaultsKeys.laddersToDoKey)
+        UserDefaults.standard.set(restBetweenLadders, forKey: DefaultsKeys.restBetweenLaddersKey)
     }
 }
