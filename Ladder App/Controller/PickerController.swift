@@ -85,12 +85,26 @@ extension PickerController {
         return arrayToUse.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return arrayToUse[row]
-    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return arrayToUse[row]
+//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         return
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Avenir", size: 20)
+            pickerLabel?.textAlignment = .center
+            pickerLabel?.textColor = .white
+            pickerLabel?.text = arrayToUse[row]
+        }
+        
+        return pickerLabel!
     }
     
     func convertToStringArray(arrayToConvert: [Int]) -> [String] {
