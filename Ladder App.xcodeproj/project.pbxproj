@@ -18,6 +18,7 @@
 		49B662CD2147214E000B386F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49B662CC2147214E000B386F /* Assets.xcassets */; };
 		49B662D02147214E000B386F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B662CE2147214E000B386F /* LaunchScreen.storyboard */; };
 		49B662DB2147214F000B386F /* Ladder_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662DA2147214F000B386F /* Ladder_AppTests.swift */; };
+		49D2693C2163E67D002A0875 /* meep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49D2693B2163E67D002A0875 /* meep.wav */; };
 		49F8E89F214927B600571179 /* CustomizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E89E214927B600571179 /* CustomizeController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		49B662D62147214F000B386F /* Ladder AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ladder AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B662DA2147214F000B386F /* Ladder_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ladder_AppTests.swift; sourceTree = "<group>"; };
 		49B662DC2147214F000B386F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49D2693B2163E67D002A0875 /* meep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meep.wav; sourceTree = "<group>"; };
 		49F8E89E214927B600571179 /* CustomizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 		49B662C12147214D000B386F /* Ladder App */ = {
 			isa = PBXGroup;
 			children = (
+				49D269362163DC30002A0875 /* Sounds */,
 				492039402148330000B21772 /* Controller */,
 				4920393F214832FB00B21772 /* View */,
 				4920393E214832F100B21772 /* Model */,
@@ -145,6 +148,14 @@
 				49B662DC2147214F000B386F /* Info.plist */,
 			);
 			path = "Ladder AppTests";
+			sourceTree = "<group>";
+		};
+		49D269362163DC30002A0875 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				49D2693B2163E67D002A0875 /* meep.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +244,7 @@
 				49B662D02147214E000B386F /* LaunchScreen.storyboard in Resources */,
 				49B662CD2147214E000B386F /* Assets.xcassets in Resources */,
 				49B662C82147214D000B386F /* Main.storyboard in Resources */,
+				49D2693C2163E67D002A0875 /* meep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

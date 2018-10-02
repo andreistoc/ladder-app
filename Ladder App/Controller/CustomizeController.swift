@@ -34,7 +34,6 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidAppear(_ animated: Bool) {
         getDataFromUserDefaults()
-        print("VIEW DID APPEAR M8")
         customizeTableView.reloadData()
     }
     

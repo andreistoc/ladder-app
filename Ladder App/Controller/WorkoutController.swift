@@ -58,13 +58,22 @@ class WorkoutController: UIViewController {
     let synth = AVSpeechSynthesizer()
     var utterance = AVSpeechUtterance(string: "")
     
-
-    
+    //Meep player
+    var meepPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let path = Bundle.main.path(forResource: "meep.wav", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            meepPlayer = try AVAudioPlayer(contentsOf: url)
+        } catch {
+            print("Could not load audio file")
+        }
+
         
         //Customize buttons
         pauseStartResumeBtn.layer.cornerRadius = 16
@@ -108,9 +117,9 @@ class WorkoutController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        getDataFromUserDefaults()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        getDataFromUserDefaults()
+//    }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
         if isRunning {
@@ -159,7 +168,13 @@ class WorkoutController: UIViewController {
                 
                 if self.preCountTimeRemaining > 0 {
                     self.preCountIteration()
-                    if self.preCountTimeRemaining == 1 {
+                    
+                    if self.preCountTimeRemaining == 1 || self.preCountTimeRemaining == 2 || self.preCountTimeRemaining == 3 {
+                        self.meepPlayer?.play()
+                        print("Meep!")
+                    }
+                    
+                    if self.preCountTimeRemaining == 0 {
                         self.utterance = AVSpeechUtterance(string: "Do " + String(self.setsArray[self.setsDone]) + " reps!")
                         self.synth.speak(self.utterance)
                     }
@@ -167,7 +182,7 @@ class WorkoutController: UIViewController {
                     if self.laddersDone < self.laddersToDo {
                         
                         if self.setsDone == self.setsArray.count {
-                            if self.ladderRestTimeRemaining > 0 && self.laddersDone < self.laddersToDo - 1 && self.setsDone != 0{
+                            if self.ladderRestTimeRemaining > 0 && self.laddersDone < self.laddersToDo - 1 && self.setsDone != 0 {
                                 
                                 if self.ladderRestTimeRemaining == self.restBetweenLadders {
                                     self.utterance = AVSpeechUtterance(string: "Rest until the next ladder starts!")
@@ -190,6 +205,11 @@ class WorkoutController: UIViewController {
                         } else {
                             if self.isWorkout {
                                 self.workoutIteration()
+                                if self.setTimeRemaining == 1 || self.setTimeRemaining == 2 || self.setTimeRemaining == 3 {
+                                    self.meepPlayer?.play()
+                                    print("Meep!")
+                                }
+                                
                                 if self.setTimeRemaining == 0 {
                                     self.isWorkout = false
                                     self.view.backgroundColor = self.restColor
@@ -202,6 +222,12 @@ class WorkoutController: UIViewController {
                                 
                             } else {
                                 self.restIteration()
+                                
+                                if self.restTimeRemaining == 0 || self.restTimeRemaining == 1 || self.restTimeRemaining == 2 {
+                                    self.meepPlayer?.play()
+                                    print("Meep!")
+                                }
+                                
                                 if self.restTimeRemaining == 0 {
                                     self.setsDone += 1
                                     print("Sets done: \(self.setsDone), Total sets: \(self.maximumReps)")
@@ -412,4 +438,3 @@ extension WorkoutController {
         }
     }
 }
-
