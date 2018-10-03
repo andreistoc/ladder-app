@@ -14,7 +14,7 @@ class PickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     var customizeCellSelected = 0
     
     var ascendingDescending = ["Ascending", "Descending"]
-    var wavingOrNot = ["Simple", "Waving"]
+    var wavingOrNot = ["Waving", "Simple"]
     var maximumNumberOfReps: [Int] = []
     var timePerRepetition: [Int] = []
     var restPerRepetition: [Int] = []
@@ -145,7 +145,4 @@ extension PickerController {
         return finalArray
     }
     
-    func loadUserDefaults(){
-        
-    }
 }

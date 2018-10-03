@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492A7095216524AE00E81D9D /* LearnText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A7094216524AE00E81D9D /* LearnText.swift */; };
+		492A70972165300600E81D9D /* LearnController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A70962165300600E81D9D /* LearnController.swift */; };
 		495077DE215E9896006B8CEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495077DD215E9896006B8CEB /* AVFoundation.framework */; };
 		4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974FFF021511B50006AFEA5 /* CustomizeCell.swift */; };
 		497830E92162422500805C36 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497830E82162422500805C36 /* DefaultsKeys.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		492A7094216524AE00E81D9D /* LearnText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnText.swift; sourceTree = "<group>"; };
+		492A70962165300600E81D9D /* LearnController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnController.swift; sourceTree = "<group>"; };
 		495077DD215E9896006B8CEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4974FFF021511B50006AFEA5 /* CustomizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCell.swift; sourceTree = "<group>"; };
 		497830E82162422500805C36 /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				497830E82162422500805C36 /* DefaultsKeys.swift */,
+				492A7094216524AE00E81D9D /* LearnText.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 				49B662C42147214D000B386F /* WorkoutController.swift */,
 				49F8E89E214927B600571179 /* CustomizeController.swift */,
 				499ACDED2152B3A900C3DB96 /* PickerController.swift */,
+				492A70962165300600E81D9D /* LearnController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -263,10 +269,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B662C52147214D000B386F /* WorkoutController.swift in Sources */,
+				492A7095216524AE00E81D9D /* LearnText.swift in Sources */,
 				497830E92162422500805C36 /* DefaultsKeys.swift in Sources */,
 				4974FFF121511B50006AFEA5 /* CustomizeCell.swift in Sources */,
 				49B662CB2147214D000B386F /* Ladder_App.xcdatamodeld in Sources */,
 				499ACDEE2152B3A900C3DB96 /* PickerController.swift in Sources */,
+				492A70972165300600E81D9D /* LearnController.swift in Sources */,
 				49B662C32147214D000B386F /* AppDelegate.swift in Sources */,
 				49F8E89F214927B600571179 /* CustomizeController.swift in Sources */,
 			);

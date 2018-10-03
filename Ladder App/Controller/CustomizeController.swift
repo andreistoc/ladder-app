@@ -73,6 +73,7 @@ class CustomizeController: UIViewController, UITableViewDelegate, UITableViewDat
             } else {
                 wavingString = "NO"
             }
+            
             cell.descriptionTextView.text = "Waving ladder: " + wavingString
         case 2:
             cell.descriptionTextView.text = "Maximum number of reps: " + String(maximumReps)

@@ -38,6 +38,7 @@ class WorkoutController: UIViewController {
     var setsDone = 0
     var laddersDone = 0
     var ladderRestTimeRemaining = 10
+    var workoutStarted = false
     
     //Labels
     @IBOutlet weak var timeDisplayTextView: UITextView!
@@ -117,44 +118,16 @@ class WorkoutController: UIViewController {
         
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        getDataFromUserDefaults()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        resetWorkout()
+    }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
-        if isRunning {
-            workoutTimer.invalidate()
-        }
-        
-        getDataFromUserDefaults()
-        
-        //Set initial clear labels
-        timeDisplayTextView.text = ""
-        statusTextView.text = ""
-        nextTextView.text = ""
-        nextTodoTextView.text = ""
-        setInitialMultiStatusDisplay()
-        
-        
-        //Re-retrieve data from user defaults
-        isRunning = false
-        preCountTimeRemaining = 5
-        isWorkout = true
-        setTimeRemaining = 0
-        restTimeRemaining = 0
-        setsDone = 0
-        laddersDone = 0
-        ladderRestTimeRemaining = 10
-        
-        calculateTotalTimeRemaining()
-        
-        //Reset variables
-        preCountTimeRemaining = 5
-        
-        pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
+        resetWorkout()
     }
     
     @IBAction func pauseStartResumeBtnPressed(_ sender: Any) {
+        workoutStarted = true
         nextTextView.text = "Next:"
         if !isRunning {
             isRunning = true
@@ -177,6 +150,7 @@ class WorkoutController: UIViewController {
                     if self.preCountTimeRemaining == 0 {
                         self.utterance = AVSpeechUtterance(string: "Do " + String(self.setsArray[self.setsDone]) + " reps!")
                         self.synth.speak(self.utterance)
+                        
                     }
                 } else {
                     if self.laddersDone < self.laddersToDo {
@@ -212,9 +186,9 @@ class WorkoutController: UIViewController {
                                 
                                 if self.setTimeRemaining == 0 {
                                     self.isWorkout = false
-                                    self.view.backgroundColor = self.restColor
                                     self.utterance = AVSpeechUtterance(string: "Rest!")
                                     self.synth.speak(self.utterance)
+                                    
                                 }
                                 
                                 
@@ -284,6 +258,9 @@ class WorkoutController: UIViewController {
         self.multiStatusDisplayTextView.text = self.multiStatusDisplayTextView.text + "Time remaining: " + secondsToTimestamp(intSeconds: totalTimeRemaining)    }
     
     func populateSetsArray(){
+        
+        setsArray = []
+        
         if isAscending {
             if isWaving{
                 for i in 1...maximumReps / 2 {
@@ -337,7 +314,7 @@ extension WorkoutController {
         nextTodoTextView.text = "Rest"
         totalTimeRemaining -= 1
         setTimeRemaining -= 1
-        
+        self.view.backgroundColor = self.exerciseColor
     }
     
     func restIteration(){
@@ -349,6 +326,7 @@ extension WorkoutController {
         }
         totalTimeRemaining -= 1
         restTimeRemaining -= 1
+        self.view.backgroundColor = self.restColor
     }
     
     func finishWorkout(){
@@ -357,6 +335,7 @@ extension WorkoutController {
         nextTextView.text = "Great job!"
         nextTodoTextView.text = ""
         setInitialMultiStatusDisplay()
+        self.view.backgroundColor = self.restColor
     }
     
     func ladderRestIteration(){
@@ -436,5 +415,45 @@ extension WorkoutController {
             print("App launched first time")
             return false
         }
+    }
+}
+
+//Function that resets the workout parameters
+extension WorkoutController {
+    func resetWorkout() {
+        if isRunning {
+            workoutTimer.invalidate()
+        }
+        
+        self.view.backgroundColor = restColor
+        
+        
+        
+        //Set initial clear labels
+        timeDisplayTextView.text = ""
+        statusTextView.text = ""
+        nextTextView.text = ""
+        nextTodoTextView.text = ""
+        setInitialMultiStatusDisplay()
+        workoutStarted = false
+        
+        
+        //Re-retrieve data from user defaults
+        getDataFromUserDefaults()
+        populateSetsArray()
+        
+        //Reset state variables
+        isRunning = false
+        preCountTimeRemaining = 5
+        isWorkout = true
+        setTimeRemaining = 0
+        restTimeRemaining = 0
+        setsDone = 0
+        laddersDone = 0
+        ladderRestTimeRemaining = 10
+        calculateTotalTimeRemaining()
+        preCountTimeRemaining = 5
+        
+        pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
     }
 }
