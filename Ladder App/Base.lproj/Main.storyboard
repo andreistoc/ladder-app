@@ -68,7 +68,13 @@
                         <viewLayoutGuide key="safeArea" id="MnI-sm-Cz1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setup" id="L1r-zU-gWp"/>
-                    <navigationItem key="navigationItem" id="KrF-GT-yMk"/>
+                    <navigationItem key="navigationItem" id="KrF-GT-yMk">
+                        <barButtonItem key="rightBarButtonItem" title="Info" id="OSj-ry-lFJ">
+                            <connections>
+                                <segue destination="W2G-QB-bV8" kind="show" id="lJN-8c-y5v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="customizeTableView" destination="bDh-US-y7T" id="66M-fG-gVv"/>
                     </connections>
@@ -125,7 +131,7 @@
         <!--Learn-->
         <scene sceneID="8dI-ZC-wkn">
             <objects>
-                <viewController id="xnX-VS-E14" sceneMemberID="viewController">
+                <viewController id="xnX-VS-E14" customClass="LearnController" customModule="Ladder_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gfr-Sc-u0J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,10 +140,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyM-vN-uca">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1160"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Welcome to ladder workouts!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JO9-Ps-B42">
-                                                <rect key="frame" x="8" y="30" width="304" height="50"/>
+                                                <rect key="frame" x="8" y="20" width="304" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="JJf-Vr-WFU"/>
@@ -147,7 +153,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="What are ladder workouts?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-Pp-pbR">
-                                                <rect key="frame" x="8" y="196" width="304" height="50"/>
+                                                <rect key="frame" x="8" y="186" width="304" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="xOm-8O-06I"/>
@@ -156,8 +162,8 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKq-lg-vYa">
-                                                <rect key="frame" x="8" y="88" width="304" height="100"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKq-lg-vYa">
+                                                <rect key="frame" x="8" y="78" width="304" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="gZy-Ir-bQH"/>
@@ -167,8 +173,8 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-We-kJE">
-                                                <rect key="frame" x="8" y="254" width="304" height="856"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-We-kJE">
+                                                <rect key="frame" x="8" y="244" width="304" height="856"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="856" id="Ekv-MD-nj9"/>
@@ -177,7 +183,7 @@
     There is another type of ladder, called a waving ladder, where you alternate between low and high numbers of repetitions per set. So, for a waving ladder from 1 to 5, the sets would be: 1,5,2,4,3. This is the most interesting type, as it allows you to get more work done in less time, and it will also feel almost easy.
     This app will take care of most of the planning for you. You just need to choose what sets and reps you want to do. If you want more strength but don't care about size that much, try ladders that go up to 3–5 repetitions. If you want to get big, try ladders that go up to 8–12 repetitions. And if you want endurance, go even higher!
     Don't do too many ladders per workout, however, as they will tax your body too much. Try not to do more than 4 per workout, although two should normally suffice. Also, DO NOT LIFT TO FAILURE. Leave a little bit of gas in the tank. It will allow you to do more work and get stronger in a healthier way.
-    Also experiment with the amount of rest between sets. You should try and get more rest for workouts that focus on strength and less when working for hypertrophy. Experiment an find what works for you.
+    Also experiment with the amount of rest between sets. You should try and get more rest for workouts that focus on strength and less when working for hypertrophy. Experiment and find what works for you.
     The rest between ladders should be less than 5 minutes if you train for size, and 5 minutes or more if you train heavy for strength.
     I wish you the best of luck with your training, and thank you for your support!</mutableString>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,7 +204,7 @@
                                             <constraint firstItem="bKq-lg-vYa" firstAttribute="leading" secondItem="LyM-vN-uca" secondAttribute="leading" constant="8" id="epF-uS-khz"/>
                                             <constraint firstAttribute="trailing" secondItem="LiB-We-kJE" secondAttribute="trailing" constant="8" id="gIv-wC-d4a"/>
                                             <constraint firstItem="Xsp-Pp-pbR" firstAttribute="top" secondItem="bKq-lg-vYa" secondAttribute="bottom" constant="8" id="n7n-hN-V5C"/>
-                                            <constraint firstItem="JO9-Ps-B42" firstAttribute="top" secondItem="LyM-vN-uca" secondAttribute="top" constant="30" id="qMG-yP-4au"/>
+                                            <constraint firstItem="JO9-Ps-B42" firstAttribute="top" secondItem="LyM-vN-uca" secondAttribute="top" constant="20" id="qMG-yP-4au"/>
                                             <constraint firstAttribute="trailing" secondItem="bKq-lg-vYa" secondAttribute="trailing" constant="8" id="yot-7t-ISh"/>
                                         </constraints>
                                     </view>
@@ -229,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03R-0o-5N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="1736"/>
+            <point key="canvasLocation" x="1620" y="1657"/>
         </scene>
         <!--Workout-->
         <scene sceneID="w0D-BH-eub">
@@ -391,6 +397,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRn-Xo-E0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1620" y="542"/>
+        </scene>
+        <!--Learn Controller-->
+        <scene sceneID="XyG-yR-zAq">
+            <objects>
+                <viewController id="W2G-QB-bV8" customClass="LearnController" customModule="Ladder_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Qt-qD-Inf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asU-hz-LiC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUd-D6-RUy">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="704"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="How to customize your workout" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PUV-dL-2nv">
+                                                <rect key="frame" x="8" y="20" width="304" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="KnP-Ao-RGb"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="What do all the options do?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="prP-7Q-SQ4">
+                                                <rect key="frame" x="8" y="216" width="304" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="rjg-mN-JGN"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Ladders has a lot of options for customizing your workout for your own personal goals." textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-tj-Uxx">
+                                                <rect key="frame" x="8" y="108" width="304" height="100"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="gb2-LE-PEC"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Ladders has a lot of options for customizing your workout for your own personal goals." textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0U-Oc-BuP">
+                                                <rect key="frame" x="8" y="274" width="304" height="400"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="Oqb-Aj-5N4"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="o0U-Oc-BuP" secondAttribute="trailing" constant="8" id="1UC-HZ-eFq"/>
+                                            <constraint firstItem="PUV-dL-2nv" firstAttribute="top" secondItem="wUd-D6-RUy" secondAttribute="top" constant="20" id="2Sv-FD-NKE"/>
+                                            <constraint firstAttribute="bottom" secondItem="o0U-Oc-BuP" secondAttribute="bottom" constant="30" id="5Ex-YA-BtQ"/>
+                                            <constraint firstItem="9Ej-tj-Uxx" firstAttribute="top" secondItem="PUV-dL-2nv" secondAttribute="bottom" constant="8" id="Eyx-TX-j5b"/>
+                                            <constraint firstItem="o0U-Oc-BuP" firstAttribute="top" secondItem="prP-7Q-SQ4" secondAttribute="bottom" constant="8" id="JBz-OT-7n4"/>
+                                            <constraint firstItem="o0U-Oc-BuP" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="L0c-sy-64V"/>
+                                            <constraint firstAttribute="trailing" secondItem="PUV-dL-2nv" secondAttribute="trailing" constant="8" id="OOl-jP-wJ6"/>
+                                            <constraint firstItem="PUV-dL-2nv" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="biq-aJ-Fcz"/>
+                                            <constraint firstItem="prP-7Q-SQ4" firstAttribute="top" secondItem="9Ej-tj-Uxx" secondAttribute="bottom" constant="8" id="gYF-P6-sbj"/>
+                                            <constraint firstItem="prP-7Q-SQ4" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="hvt-HB-k6K"/>
+                                            <constraint firstAttribute="trailing" secondItem="prP-7Q-SQ4" secondAttribute="trailing" constant="8" id="kZV-XD-1yX"/>
+                                            <constraint firstItem="9Ej-tj-Uxx" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="ond-11-mn1"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Ej-tj-Uxx" secondAttribute="trailing" constant="8" id="t6S-1x-DVK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wUd-D6-RUy" firstAttribute="leading" secondItem="asU-hz-LiC" secondAttribute="leading" id="Gmw-3c-3wk"/>
+                                    <constraint firstAttribute="bottom" secondItem="wUd-D6-RUy" secondAttribute="bottom" id="RsE-hN-vOt"/>
+                                    <constraint firstAttribute="trailing" secondItem="wUd-D6-RUy" secondAttribute="trailing" id="coK-sv-gLi"/>
+                                    <constraint firstItem="wUd-D6-RUy" firstAttribute="top" secondItem="asU-hz-LiC" secondAttribute="top" id="vkw-dw-JFG"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13086521625518799" green="0.46322864294052124" blue="0.68056124448776245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="asU-hz-LiC" firstAttribute="top" secondItem="6Qt-qD-Inf" secondAttribute="top" id="G5H-yg-1xD"/>
+                            <constraint firstAttribute="bottom" secondItem="asU-hz-LiC" secondAttribute="bottom" id="Y4o-7A-HUe"/>
+                            <constraint firstItem="wUd-D6-RUy" firstAttribute="width" secondItem="6Qt-qD-Inf" secondAttribute="width" id="c8s-rJ-y6G"/>
+                            <constraint firstItem="asU-hz-LiC" firstAttribute="leading" secondItem="6Qt-qD-Inf" secondAttribute="leading" id="igz-fV-arq"/>
+                            <constraint firstItem="wUd-D6-RUy" firstAttribute="height" secondItem="6Qt-qD-Inf" secondAttribute="height" priority="250" id="o4o-yA-z50"/>
+                            <constraint firstAttribute="trailing" secondItem="asU-hz-LiC" secondAttribute="trailing" id="sJT-ft-8wp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0gZ-WR-uqE"/>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <size key="freeformSize" width="320" height="1200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kmx-yW-hjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2469" y="-480"/>
         </scene>
     </scenes>
 </document>
