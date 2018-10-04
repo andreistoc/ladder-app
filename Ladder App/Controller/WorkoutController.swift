@@ -74,44 +74,19 @@ class WorkoutController: UIViewController {
         } catch {
             print("Could not load audio file")
         }
-
+        
         
         //Customize buttons
         pauseStartResumeBtn.layer.cornerRadius = 16
         resetBtn.layer.cornerRadius = 8
         
-        //Set background color
-        self.view.backgroundColor = restColor
-        
-        //Set start button
-        pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
-        
         //Generate UserDefaults at first run
-        
         if  !isAppAlreadyLaunchedOnce() {
             writeDataToUserDefaults()
         }
         
-        //Set initial clear labels
-        timeDisplayTextView.text = ""
-        statusTextView.text = ""
-        nextTextView.text = ""
-        nextTodoTextView.text = ""
-        setInitialMultiStatusDisplay()
         
-        //Populate sets array
-        populateSetsArray()
-        
-        //Calculate rep times and rest times
-        restTimesArray = setsArray.map({return $0 * restPerRep})
-        setTimesArray = setsArray.map({return $0 * timePerRep})
-        
-        print(restTimesArray)
-        print(setTimesArray)
-        
-        //Calculate total workout time
-        
-        calculateTotalTimeRemaining()
+        resetWorkout()
         
         //Set utterance rate
         utterance.rate = 0.1
@@ -441,6 +416,11 @@ extension WorkoutController {
         //Re-retrieve data from user defaults
         getDataFromUserDefaults()
         populateSetsArray()
+        
+        //Calculate rep times and rest times
+        restTimesArray = setsArray.map({return $0 * restPerRep})
+        setTimesArray = setsArray.map({return $0 * timePerRep})
+        
         
         //Reset state variables
         isRunning = false
