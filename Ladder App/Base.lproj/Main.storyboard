@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Setup-->
+        <!--Learn-->
         <scene sceneID="Xsm-YG-wnv">
             <objects>
                 <viewController id="777-n3-LEg" customClass="CustomizeController" customModule="Ladder_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,9 +67,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MnI-sm-Cz1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setup" id="L1r-zU-gWp"/>
+                    <tabBarItem key="tabBarItem" title="Learn" id="L1r-zU-gWp"/>
                     <navigationItem key="navigationItem" id="KrF-GT-yMk">
-                        <barButtonItem key="rightBarButtonItem" title="Info" id="OSj-ry-lFJ">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="OSj-ry-lFJ">
                             <connections>
                                 <segue destination="W2G-QB-bV8" kind="show" id="lJN-8c-y5v"/>
                             </connections>
@@ -179,13 +179,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="856" id="Ekv-MD-nj9"/>
                                                 </constraints>
-                                                <mutableString key="text">Ladder workouts involve doing each number of reps between two numbers. So, an ascending ladder from 1 to 5 would mean that you do sets of 1,2,3,4 and 5 reps. A descending ladder from 5 to 1 means you do sets of 5,4,3,2 and 1.
+                                                <string key="text">Ladder workouts involve doing each number of reps between two numbers. So, an ascending ladder from 1 to 5 would mean that you do sets of 1,2,3,4 and 5 reps. A descending ladder from 5 to 1 means you do sets of 5,4,3,2 and 1.
     There is another type of ladder, called a waving ladder, where you alternate between low and high numbers of repetitions per set. So, for a waving ladder from 1 to 5, the sets would be: 1,5,2,4,3. This is the most interesting type, as it allows you to get more work done in less time, and it will also feel almost easy.
     This app will take care of most of the planning for you. You just need to choose what sets and reps you want to do. If you want more strength but don't care about size that much, try ladders that go up to 3–5 repetitions. If you want to get big, try ladders that go up to 8–12 repetitions. And if you want endurance, go even higher!
     Don't do too many ladders per workout, however, as they will tax your body too much. Try not to do more than 4 per workout, although two should normally suffice. Also, DO NOT LIFT TO FAILURE. Leave a little bit of gas in the tank. It will allow you to do more work and get stronger in a healthier way.
     Also experiment with the amount of rest between sets. You should try and get more rest for workouts that focus on strength and less when working for hypertrophy. Experiment and find what works for you.
     The rest between ladders should be less than 5 minutes if you train for size, and 5 minutes or more if you train heavy for strength.
-    I wish you the best of luck with your training, and thank you for your support!</mutableString>
+    I wish you the best of luck with your training, and thank you for your support!</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -229,7 +229,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2iU-Y7-blv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Learn" id="z95-Kg-gad"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="learn_tab_bar_icon" id="z95-Kg-gad"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="320" height="1200"/>
                 </viewController>
@@ -346,7 +346,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Swb-Di-74J"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Workout" id="gba-ak-HZN"/>
+                    <tabBarItem key="tabBarItem" title="Workout" image="workout_tab_bar_icon" id="gba-ak-HZN"/>
                     <connections>
                         <outlet property="multiStatusDisplayTextView" destination="f5J-Ua-UKL" id="c7D-cj-DF6"/>
                         <outlet property="nextTextView" destination="tkF-H5-s8T" id="Clo-gV-EMI"/>
@@ -380,11 +380,11 @@
             </objects>
             <point key="canvasLocation" x="668" y="213"/>
         </scene>
-        <!--Setup-->
+        <!--Customize-->
         <scene sceneID="bsJ-qx-QRQ">
             <objects>
                 <navigationController id="U0b-9O-J1v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setup" id="yq6-WZ-y4n"/>
+                    <tabBarItem key="tabBarItem" title="Customize" image="customize_tab_bar_icon" id="yq6-WZ-y4n"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KTr-Lu-deS">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -442,7 +442,7 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Ladders has a lot of options for customizing your workout for your own personal goals." textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0U-Oc-BuP">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0U-Oc-BuP">
                                                 <rect key="frame" x="8" y="274" width="304" height="400"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -499,4 +499,9 @@
             <point key="canvasLocation" x="2469" y="-480"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="customize_tab_bar_icon" width="30" height="30"/>
+        <image name="learn_tab_bar_icon" width="30" height="30"/>
+        <image name="workout_tab_bar_icon" width="30" height="30"/>
+    </resources>
 </document>

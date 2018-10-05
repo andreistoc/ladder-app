@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49038C0C2167C4F300B59649 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49038C0B2167C4F300B59649 /* Assets.xcassets */; };
 		492A7095216524AE00E81D9D /* LearnText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A7094216524AE00E81D9D /* LearnText.swift */; };
 		492A70972165300600E81D9D /* LearnController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A70962165300600E81D9D /* LearnController.swift */; };
 		495077DE215E9896006B8CEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495077DD215E9896006B8CEB /* AVFoundation.framework */; };
@@ -17,7 +18,6 @@
 		49B662C52147214D000B386F /* WorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C42147214D000B386F /* WorkoutController.swift */; };
 		49B662C82147214D000B386F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B662C62147214D000B386F /* Main.storyboard */; };
 		49B662CB2147214D000B386F /* Ladder_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49B662C92147214D000B386F /* Ladder_App.xcdatamodeld */; };
-		49B662CD2147214E000B386F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49B662CC2147214E000B386F /* Assets.xcassets */; };
 		49B662D02147214E000B386F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B662CE2147214E000B386F /* LaunchScreen.storyboard */; };
 		49B662DB2147214F000B386F /* Ladder_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B662DA2147214F000B386F /* Ladder_AppTests.swift */; };
 		49D2693C2163E67D002A0875 /* meep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49D2693B2163E67D002A0875 /* meep.wav */; };
@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49038C0B2167C4F300B59649 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		492A7094216524AE00E81D9D /* LearnText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnText.swift; sourceTree = "<group>"; };
 		492A70962165300600E81D9D /* LearnController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnController.swift; sourceTree = "<group>"; };
 		495077DD215E9896006B8CEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -46,7 +47,6 @@
 		49B662C42147214D000B386F /* WorkoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutController.swift; sourceTree = "<group>"; };
 		49B662C72147214D000B386F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49B662CA2147214D000B386F /* Ladder_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ladder_App.xcdatamodel; sourceTree = "<group>"; };
-		49B662CC2147214E000B386F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49B662CF2147214E000B386F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49B662D12147214E000B386F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B662D62147214F000B386F /* Ladder AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ladder AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,13 +133,13 @@
 		49B662C12147214D000B386F /* Ladder App */ = {
 			isa = PBXGroup;
 			children = (
+				49038C0B2167C4F300B59649 /* Assets.xcassets */,
 				49D269362163DC30002A0875 /* Sounds */,
 				492039402148330000B21772 /* Controller */,
 				4920393F214832FB00B21772 /* View */,
 				4920393E214832F100B21772 /* Model */,
 				49B662C22147214D000B386F /* AppDelegate.swift */,
 				49B662C62147214D000B386F /* Main.storyboard */,
-				49B662CC2147214E000B386F /* Assets.xcassets */,
 				49B662CE2147214E000B386F /* LaunchScreen.storyboard */,
 				49B662D12147214E000B386F /* Info.plist */,
 				49B662C92147214D000B386F /* Ladder_App.xcdatamodeld */,
@@ -248,8 +248,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B662D02147214E000B386F /* LaunchScreen.storyboard in Resources */,
-				49B662CD2147214E000B386F /* Assets.xcassets in Resources */,
 				49B662C82147214D000B386F /* Main.storyboard in Resources */,
+				49038C0C2167C4F300B59649 /* Assets.xcassets in Resources */,
 				49D2693C2163E67D002A0875 /* meep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
