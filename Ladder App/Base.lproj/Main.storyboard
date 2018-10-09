@@ -281,7 +281,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Rbc-Lh-Mk3"/>
                                     <constraint firstAttribute="width" constant="250" id="b7G-4U-pgS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Start Workout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -311,12 +311,13 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAq-8k-amN">
-                                <rect key="frame" x="137" y="467" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.4427508529512999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="80" y="467" width="160" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.22492888801326361" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="gQY-QK-TNZ"/>
-                                    <constraint firstAttribute="height" constant="30" id="kfZ-dl-o6q"/>
+                                    <constraint firstAttribute="width" constant="160" id="gQY-QK-TNZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="kfZ-dl-o6q"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -410,7 +411,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUd-D6-RUy">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="704"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="How to customize your workout" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PUV-dL-2nv">
                                                 <rect key="frame" x="8" y="20" width="304" height="80"/>
@@ -439,35 +440,95 @@
                                                     <constraint firstAttribute="height" constant="100" id="gb2-LE-PEC"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0U-Oc-BuP">
-                                                <rect key="frame" x="8" y="274" width="304" height="400"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srL-4c-JiC">
+                                                <rect key="frame" x="16" y="270" width="288" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="0.25232769691780821" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="Oux-MU-Qke"/>
+                                                </constraints>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Direction" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="caa-Hn-a3y">
+                                                <rect key="frame" x="8" y="280" width="304" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="400" id="Oqb-Aj-5N4"/>
+                                                    <constraint firstAttribute="height" constant="30" id="lSY-36-VG2"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVA-J8-SgY">
+                                                <rect key="frame" x="8" y="310" width="304" height="170"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="170" id="MNn-rw-7p2"/>
+                                                </constraints>
+                                                <string key="text">Adjusts the way the sets are arranged. From high to low or from low to high. In the case of waving ladders ascending means the first set is a set of 1 rep, and descending means that the ladder starts with the maximum number of reps selected</string>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXl-w4-67t">
+                                                <rect key="frame" x="16" y="480" width="288" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="0.25232769690000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="Web-LN-Lgf"/>
+                                                </constraints>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Waving Ladder" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-B3-4qs">
+                                                <rect key="frame" x="8" y="490" width="304" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="WZY-av-lic"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9n-mW-hcT">
+                                                <rect key="frame" x="8" y="520" width="304" height="170"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="170" id="ghd-vy-aGf"/>
+                                                </constraints>
+                                                <string key="text">If set to "YES" the sets will be interspersed. So an ascending ladder will have a rep scheme of (1,5,2,4,3) and a descending one will be (5,1,4,2,3). If you set it to no, the ladders will be normal, (1,2,3,4,5) if ascending or (5,4,3,2,1) if descending.</string>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="o0U-Oc-BuP" secondAttribute="trailing" constant="8" id="1UC-HZ-eFq"/>
+                                            <constraint firstItem="IXl-w4-67t" firstAttribute="top" secondItem="MVA-J8-SgY" secondAttribute="bottom" id="0zv-sD-T0c"/>
                                             <constraint firstItem="PUV-dL-2nv" firstAttribute="top" secondItem="wUd-D6-RUy" secondAttribute="top" constant="20" id="2Sv-FD-NKE"/>
-                                            <constraint firstAttribute="bottom" secondItem="o0U-Oc-BuP" secondAttribute="bottom" constant="30" id="5Ex-YA-BtQ"/>
+                                            <constraint firstItem="IXl-w4-67t" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="16" id="9Z6-vn-WEm"/>
                                             <constraint firstItem="9Ej-tj-Uxx" firstAttribute="top" secondItem="PUV-dL-2nv" secondAttribute="bottom" constant="8" id="Eyx-TX-j5b"/>
-                                            <constraint firstItem="o0U-Oc-BuP" firstAttribute="top" secondItem="prP-7Q-SQ4" secondAttribute="bottom" constant="8" id="JBz-OT-7n4"/>
-                                            <constraint firstItem="o0U-Oc-BuP" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="L0c-sy-64V"/>
+                                            <constraint firstAttribute="trailing" secondItem="srL-4c-JiC" secondAttribute="trailing" constant="16" id="HU6-H0-f5n"/>
+                                            <constraint firstItem="A9n-mW-hcT" firstAttribute="top" secondItem="egJ-B3-4qs" secondAttribute="bottom" id="Hqk-BS-ptT"/>
+                                            <constraint firstItem="srL-4c-JiC" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="16" id="Jzl-ym-Afn"/>
+                                            <constraint firstItem="MVA-J8-SgY" firstAttribute="top" secondItem="caa-Hn-a3y" secondAttribute="bottom" id="LEy-7W-vqP"/>
+                                            <constraint firstAttribute="trailing" secondItem="caa-Hn-a3y" secondAttribute="trailing" constant="8" id="Lt4-uC-t9H"/>
+                                            <constraint firstItem="egJ-B3-4qs" firstAttribute="top" secondItem="IXl-w4-67t" secondAttribute="bottom" constant="8" id="NOX-1b-CkY"/>
                                             <constraint firstAttribute="trailing" secondItem="PUV-dL-2nv" secondAttribute="trailing" constant="8" id="OOl-jP-wJ6"/>
+                                            <constraint firstItem="A9n-mW-hcT" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="X14-4R-1Ol"/>
+                                            <constraint firstItem="srL-4c-JiC" firstAttribute="top" secondItem="prP-7Q-SQ4" secondAttribute="bottom" constant="4" id="bah-xo-0FO"/>
                                             <constraint firstItem="PUV-dL-2nv" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="biq-aJ-Fcz"/>
+                                            <constraint firstAttribute="trailing" secondItem="A9n-mW-hcT" secondAttribute="trailing" constant="8" id="dvg-qS-3QS"/>
+                                            <constraint firstItem="caa-Hn-a3y" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="eI3-0P-k0x"/>
                                             <constraint firstItem="prP-7Q-SQ4" firstAttribute="top" secondItem="9Ej-tj-Uxx" secondAttribute="bottom" constant="8" id="gYF-P6-sbj"/>
+                                            <constraint firstItem="MVA-J8-SgY" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="hNw-DY-asF"/>
                                             <constraint firstItem="prP-7Q-SQ4" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="hvt-HB-k6K"/>
+                                            <constraint firstItem="egJ-B3-4qs" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="jCj-82-8s6"/>
+                                            <constraint firstAttribute="trailing" secondItem="egJ-B3-4qs" secondAttribute="trailing" constant="8" id="kFg-sT-Ro4"/>
                                             <constraint firstAttribute="trailing" secondItem="prP-7Q-SQ4" secondAttribute="trailing" constant="8" id="kZV-XD-1yX"/>
                                             <constraint firstItem="9Ej-tj-Uxx" firstAttribute="leading" secondItem="wUd-D6-RUy" secondAttribute="leading" constant="8" id="ond-11-mn1"/>
                                             <constraint firstAttribute="trailing" secondItem="9Ej-tj-Uxx" secondAttribute="trailing" constant="8" id="t6S-1x-DVK"/>
+                                            <constraint firstAttribute="trailing" secondItem="MVA-J8-SgY" secondAttribute="trailing" constant="8" id="xLB-bU-Rb6"/>
+                                            <constraint firstAttribute="trailing" secondItem="IXl-w4-67t" secondAttribute="trailing" constant="16" id="z4R-52-vAM"/>
+                                            <constraint firstItem="caa-Hn-a3y" firstAttribute="top" secondItem="srL-4c-JiC" secondAttribute="bottom" constant="8" id="zbL-yH-igN"/>
                                         </constraints>
                                     </view>
                                 </subviews>

@@ -19,10 +19,11 @@ class WorkoutController: UIViewController {
     var isAscending = false
     var isWaving = true
     var maximumReps = 3
-    var timePerRep = 3
-    var restPerRep = 5
+    var timePerRep = 2
+    var restPerRep = 3
     var laddersToDo = 2
-    var restBetweenLadders = 10
+    var restBetweenLadders = 300
+    var totalReps = 6
     
     
     //State variables:
@@ -37,7 +38,7 @@ class WorkoutController: UIViewController {
     var restTimeRemaining = 0
     var setsDone = 0
     var laddersDone = 0
-    var ladderRestTimeRemaining = 10
+    var ladderRestTimeRemaining = 300
     var workoutStarted = false
     
     //Labels
@@ -65,6 +66,8 @@ class WorkoutController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        UIApplication.shared.isIdleTimerDisabled = true
         
         let path = Bundle.main.path(forResource: "meep.wav", ofType:nil)!
         let url = URL(fileURLWithPath: path)
@@ -94,7 +97,10 @@ class WorkoutController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        resetWorkout()
+        if !workoutStarted {
+            resetWorkout()
+        }
+        
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
@@ -155,8 +161,10 @@ class WorkoutController: UIViewController {
                             if self.isWorkout {
                                 self.workoutIteration()
                                 if self.setTimeRemaining == 1 || self.setTimeRemaining == 2 || self.setTimeRemaining == 3 {
-                                    self.meepPlayer?.play()
-                                    print("Meep!")
+                                    if self.setsArray[self.setsDone] > 1 {
+                                       self.meepPlayer?.play()
+                                    }
+                                    
                                 }
                                 
                                 if self.setTimeRemaining == 0 {
@@ -165,16 +173,14 @@ class WorkoutController: UIViewController {
                                     self.synth.speak(self.utterance)
                                     
                                 }
-                                
-                                
-                                
-                                
                             } else {
                                 self.restIteration()
                                 
                                 if self.restTimeRemaining == 0 || self.restTimeRemaining == 1 || self.restTimeRemaining == 2 {
-                                    self.meepPlayer?.play()
-                                    print("Meep!")
+                                    if self.setsArray[self.setsDone] > 1 {
+                                        self.meepPlayer?.play()
+                                    }
+                                    
                                 }
                                 
                                 if self.restTimeRemaining == 0 {
@@ -189,15 +195,8 @@ class WorkoutController: UIViewController {
                                         self.synth.speak(self.utterance)
                                     }
                                 }
-                                
-                                
-                                
                             }
                         }
-                        
-                        
-                        
-                        
                     } else {
                         self.finishWorkout()
                         self.utterance = AVSpeechUtterance(string: "Workout done! Great job!")
@@ -350,6 +349,10 @@ extension WorkoutController {
         }
         
         
+        
+        stringToDisplay += "Total reps: \(totalReps)"
+        
+        
         multiStatusDisplayTextView.text = stringToDisplay
     }
     
@@ -409,13 +412,14 @@ extension WorkoutController {
         statusTextView.text = ""
         nextTextView.text = ""
         nextTodoTextView.text = ""
-        setInitialMultiStatusDisplay()
         workoutStarted = false
         
         
         //Re-retrieve data from user defaults
         getDataFromUserDefaults()
         populateSetsArray()
+        
+        totalReps = setsArray.reduce(0, +) * laddersToDo
         
         //Calculate rep times and rest times
         restTimesArray = setsArray.map({return $0 * restPerRep})
@@ -435,5 +439,7 @@ extension WorkoutController {
         preCountTimeRemaining = 5
         
         pauseStartResumeBtn.setTitle("Start Workout", for: .normal)
+        
+        setInitialMultiStatusDisplay()
     }
 }
