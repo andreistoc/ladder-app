@@ -23,6 +23,7 @@ class PickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     //Array that stores the data used
     var arrayToUse: [String] = []
+    var rowToSelect: Int = 0
     
     
     //Picker Outlet
@@ -45,6 +46,7 @@ class PickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         optionPicker.dataSource = self
         optionPicker.delegate = self
         
+        optionPicker.selectRow(rowToSelect, inComponent: 0, animated: true)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -55,18 +57,37 @@ class PickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         switch customizeCellSelected {
         case 0:
             arrayToUse = ascendingDescending
+            
+            let ascendingBool = UserDefaults.standard.bool(forKey: DefaultsKeys.isAscendingKey)
+            
+            if ascendingBool {
+                rowToSelect = 0
+            } else {
+                rowToSelect = 1
+            }
         case 1:
             arrayToUse = wavingOrNot
+            let wavingBool = UserDefaults.standard.bool(forKey: DefaultsKeys.isWavingKey)
+            if wavingBool {
+                rowToSelect = 0
+            } else {
+                rowToSelect = 1
+            }
         case 2:
             arrayToUse = convertToStringArray(arrayToConvert: maximumNumberOfReps)
+            rowToSelect = UserDefaults.standard.integer(forKey: DefaultsKeys.maximumRepsKey) - 3
         case 3:
             arrayToUse = convertToStringArray(arrayToConvert: timePerRepetition)
+            rowToSelect = UserDefaults.standard.integer(forKey: DefaultsKeys.timePerRepKey) - 2
         case 4:
             arrayToUse = convertToStringArray(arrayToConvert: restPerRepetition)
+            rowToSelect = UserDefaults.standard.integer(forKey: DefaultsKeys.restPerRepKey) - 2
         case 5:
             arrayToUse = convertToStringArray(arrayToConvert: laddersToDo)
+            rowToSelect = UserDefaults.standard.integer(forKey: DefaultsKeys.laddersToDoKey) - 1
         case 6:
             arrayToUse = convertToStringArray(arrayToConvert: restBetweenLadders)
+            rowToSelect = UserDefaults.standard.integer(forKey: DefaultsKeys.restBetweenLaddersKey) / 60 - 1
         default:
             break
         }
