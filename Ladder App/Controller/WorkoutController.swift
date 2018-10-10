@@ -434,7 +434,7 @@ extension WorkoutController {
         restTimeRemaining = 0
         setsDone = 0
         laddersDone = 0
-        ladderRestTimeRemaining = 10
+        ladderRestTimeRemaining = restBetweenLadders
         calculateTotalTimeRemaining()
         preCountTimeRemaining = 5
         
